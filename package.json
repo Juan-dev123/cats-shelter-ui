@@ -6,6 +6,7 @@
   "scripts": {
     "test:component:open": "cypress open",
     "test:contract": "mocha test/contract/**/*.test.js -r dotenv/config",
+    "publish:contract": "node ./test/contract/config/publish.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
