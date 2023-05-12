@@ -66,7 +66,7 @@ describe('Animal Controller Unit Tests', () => {
         expect(actualResponse.data[1]).to.be.eql(animal2);
     });
 
-    it('Test delete animals', async () => {
+    it('Test delete animal', async () => {
         moxios.wait(() => {
             const request = moxios.requests.mostRecent();
             request.respondWith({
