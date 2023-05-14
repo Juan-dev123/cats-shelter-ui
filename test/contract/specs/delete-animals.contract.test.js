@@ -10,7 +10,7 @@ describe('Animal Service', () => {
             await provider.setup();
             await provider.addInteraction({
                 uponReceiving: 'a request to delete an animal',
-                state: "there are one animal",
+                state: "there are one animal to delete",
                 withRequest: {
                     method: 'DELETE',
                     path: '/animals/Manchas',

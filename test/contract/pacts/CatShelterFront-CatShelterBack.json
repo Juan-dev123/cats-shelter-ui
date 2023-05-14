@@ -108,13 +108,50 @@
     },
     {
       "description": "a request to delete an animal",
-      "providerState": "there are one animal",
+      "providerState": "there are one animal to delete",
       "request": {
         "method": "DELETE",
         "path": "/animals/Manchas"
       },
       "response": {
         "status": 204
+      }
+    },
+    {
+      "description": "a request to list all animals",
+      "providerState": "there one animal to return",
+      "request": {
+        "method": "GET",
+        "path": "/animals/Manchas"
+      },
+      "response": {
+        "body": {
+          "breed": "Bengali",
+          "gender": "Female",
+          "name": "Manchas",
+          "vaccinated": true
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          },
+          "$.body.breed": {
+            "match": "type"
+          },
+          "$.body.gender": {
+            "match": "type"
+          },
+          "$.body.name": {
+            "match": "type"
+          },
+          "$.body.vaccinated": {
+            "match": "type"
+          }
+        },
+        "status": 200
       }
     }
   ],

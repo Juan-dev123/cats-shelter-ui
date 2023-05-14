@@ -2,26 +2,21 @@ import { provider } from '../config/init-pact.js';
 import {Matchers} from '@pact-foundation/pact';
 import { AnimalController } from '../../../controllers/AnimalsController.js';
 import { expect } from 'chai';
+import {HttpStatusCode} from "axios";
 
 describe('Animal Service', () => {
-    describe('When a request to create an animal is made', () => {
+    describe('When a request to get an animal is made', () => {
         before(async () => {
             await provider.setup();
             await provider.addInteraction({
-                uponReceiving: 'a request to create an animal',
-                state: "there are no animals",
+                uponReceiving: 'a request to list all animals',
+                state: "there one animal to return",
                 withRequest: {
-                    method: 'POST',
-                    path: '/animals',
-                    body: Matchers.somethingLike({
-                        name: Matchers.like('Manchas'),
-                        breed: Matchers.like("Bengali"),
-                        gender: Matchers.like("Female"),
-                        vaccinated: Matchers.boolean(true)
-                    })
+                    method: 'GET',
+                    path: '/animals/Manchas'
                 },
                 willRespondWith: {
-                    status: 201,
+                    status: 200,
                     body: Matchers.somethingLike({
                         name: Matchers.like('Manchas'),
                         breed: Matchers.like("Bengali"),
@@ -42,7 +37,7 @@ describe('Animal Service', () => {
                 vaccinated: true
             }
 
-            const response = await AnimalController.register(manchasCat);
+            const response = await AnimalController.getAnimal("Manchas");
             const responseBody = response.data;
 
             expect(responseBody).to.not.be.undefined;
@@ -52,6 +47,7 @@ describe('Animal Service', () => {
             expect(responseBody).to.have.property('vaccinated');
 
             expect(responseBody).to.be.eql(manchasCat);
+            expect(response.status).to.be.equal(HttpStatusCode.Ok);
             await provider.verify()
         });
     });
