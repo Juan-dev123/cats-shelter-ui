@@ -9,7 +9,7 @@ describe('Animal Service', () => {
         before(async () => {
             await provider.setup();
             await provider.addInteraction({
-                uponReceiving: 'a request to list all animals',
+                uponReceiving: 'a request to get an animal',
                 state: "there one animal to return",
                 withRequest: {
                     method: 'GET',
