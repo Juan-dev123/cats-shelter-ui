@@ -44,7 +44,7 @@
       }
     },
     {
-      "description": "a request to create a cat",
+      "description": "a request to create an animal",
       "providerState": "there are no animals",
       "request": {
         "body": {
@@ -104,6 +104,17 @@
           }
         },
         "status": 201
+      }
+    },
+    {
+      "description": "a request to delete an animal",
+      "providerState": "there are one animal",
+      "request": {
+        "method": "DELETE",
+        "path": "/animals/Manchas"
+      },
+      "response": {
+        "status": 204
       }
     }
   ],
