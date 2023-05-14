@@ -4,11 +4,11 @@ import { AnimalController } from '../../../controllers/AnimalsController.js';
 import { expect } from 'chai';
 
 describe('Animal Service', () => {
-    describe('When a request to create a cat is made', () => {
+    describe('When a request to create an animal is made', () => {
         before(async () => {
             await provider.setup();
             await provider.addInteraction({
-                uponReceiving: 'a request to create a cat',
+                uponReceiving: 'a request to create an animal',
                 state: "there are no animals",
                 withRequest: {
                     method: 'POST',
